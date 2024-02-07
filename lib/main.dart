@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MaterialPageRoute(builder: (context) =>  const BarcodeScannerWithController()),
     );
     if (kDebugMode) {
-      print("BArcord: $code");
+      print("Barcode: $code");
     }
     if(code!= null){
       if (!mounted) return;

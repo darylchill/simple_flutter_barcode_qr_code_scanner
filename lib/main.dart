@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Simple Flutter Barcode QR Scanner',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Home Screen'),
     );
   }
 }
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => getBarcodeValue(context),
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.camera_alt),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MaterialPageRoute(builder: (context) =>  const BarcodeScannerWithController()),
     );
     if (kDebugMode) {
-      print("BArcord: $code");
+      print("Barcode: $code");
     }
     if(code!= null){
       if (!mounted) return;

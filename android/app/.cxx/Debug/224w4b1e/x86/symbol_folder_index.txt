@@ -1,0 +1,1 @@
+/home/user/simple_flutter_barcode_qr_code_scanner/build/app/intermediates/cxx/Debug/224w4b1e/obj/x86

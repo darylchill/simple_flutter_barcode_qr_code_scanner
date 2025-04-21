@@ -1,8 +1,9 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:simple_flutter_simple_barcode_qr_scanner/widgets/switch_camera_button.dart';
+import 'package:simple_flutter_simple_barcode_qr_scanner/widgets/toggle_flashlight_button.dart';
 
 class BarcodeScannerWithController extends StatefulWidget {
    const BarcodeScannerWithController( {super.key  });
@@ -15,6 +16,8 @@ class BarcodeScannerWithController extends StatefulWidget {
 class _BarcodeScannerWithControllerState extends State<BarcodeScannerWithController> {
   String code ="";
   late AudioPlayer audioplayer;
+
+   Future<void> _onPressed() async => controller.toggleTorch();
 
   MobileScannerController controller = MobileScannerController(
     torchEnabled: true,
@@ -74,35 +77,9 @@ class _BarcodeScannerWithControllerState extends State<BarcodeScannerWithControl
               color: Colors.black.withOpacity(0.4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton(
-                    color: Colors.white,
-                    icon: ValueListenableBuilder(
-                      valueListenable: controller.torchState,
-                      builder: (context, state, child) {
-                        if (state == false) {
-                          return const Icon(
-                            Icons.flash_off,
-                            color: Colors.grey,
-                          );
-                        }
-                        switch (state) {
-                          case TorchState.off:
-                            return const Icon(
-                              Icons.flash_off,
-                              color: Colors.grey,
-                            );
-                          case TorchState.on:
-                            return const Icon(
-                              Icons.flash_on,
-                              color: Colors.yellow,
-                            );
-                        }
-                      },
-                    ),
-                    iconSize: 32.0,
-                    onPressed: () => controller.toggleTorch(),
-                  ),
+                 ToggleFlashlightButton(controller: controller),
                   IconButton(
                     color: Colors.white,
                     icon: isStarted
@@ -130,25 +107,7 @@ class _BarcodeScannerWithControllerState extends State<BarcodeScannerWithControl
                       ),
                     ),
                   ),
-                  IconButton(
-                    color: Colors.white,
-                    icon: ValueListenableBuilder(
-                      valueListenable: controller.cameraFacingState,
-                      builder: (context, state, child) {
-                        if (state == null) {
-                          return const Icon(Icons.camera_front);
-                        }
-                        switch (state) {
-                          case CameraFacing.front:
-                            return const Icon(Icons.camera_front);
-                          case CameraFacing.back:
-                            return const Icon(Icons.camera_rear);
-                        }
-                      },
-                    ),
-                    iconSize: 32.0,
-                    onPressed: () => controller.switchCamera(),
-                  ),
+                SwitchCameraButton(controller: controller)
 
                 ],
               ),

@@ -4,17 +4,19 @@ description: "A new Flutter project."
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ^3.7.0
 
 dependencies:
   flutter:
     sdk: flutter
 
-  awesome_dialog: ^3.2.0
-  just_audio: ^0.9.36
+  awesome_dialog: ^3.2.1
+  just_audio: ^0.10.0
   get: ^5.0.0-release-candidate-5
-  mobile_scanner: ^4.0.0
-  permission_handler: ^11.2.0
+  mobile_scanner: ^7.0.0-beta.9
+  permission_handler: ^11.3.1
+  flutter_riverpod: ^2.6.1
+  riverpod: ^2.6.1
 
 
 dev_dependencies:
@@ -26,7 +28,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

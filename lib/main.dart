@@ -1,10 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'qr_scanner.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MaterialPageRoute(builder: (context) =>  const BarcodeScannerWithController()),
     );
     if (kDebugMode) {
-      print("Barcode: $code");
+      debugPrint("Barcode: $code");
     }
     if(code!= null){
       if (!mounted) return;
